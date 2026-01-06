@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Games } from '../models/games.model';
 import {environment} from '../../../environments/environment';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {RatingStats} from '../models/ratingStats.model';
 
 @Injectable({
@@ -20,7 +20,14 @@ export class GamesService {
     return this.httpClient.get<Games[]>(this.gamesUrl + '/recent');
   }
 
-  public getGamesRatingStats() : Observable<RatingStats[]> {
-    return this.httpClient.get<RatingStats[]>(this.gamesUrl + '/ratings');
+  public getGamesRatingStats(): Observable<RatingStats[]> { return this.httpClient.get<{ [key: string]: number }>(this.gamesUrl + '/ratings')
+    .pipe(
+      map(obj =>
+        Object.entries(obj).map(([rating, count]) => ({
+          rating: Number(rating),
+          count
+        }))
+      )
+    );
   }
 }

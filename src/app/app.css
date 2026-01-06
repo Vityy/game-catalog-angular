@@ -24,10 +24,16 @@ li {
   color: green;
   align-self: flex-start;
   margin-left: 2%;
+  padding: 3px;
+  background-color: lightgray;
+  border-radius: 5px;
 }
 
 p {
   color: blue;
   align-self: flex-start;
   margin-left: 3%;
+  padding: 2px;
+  background-color: lightgray;
+  border-radius: 5px;
 }

@@ -20,6 +20,14 @@
   }
 
   <h2>Rating Stats</h2>
+
+  @for(stat of ratingStats; track stat.rating){
+    <li>Rating of {{ stat.rating }}:</li>
+    <p>Count: {{ stat.count }}</p>
+  } @empty {
+    <li>No Stats to show</li>
+  }
+
 </body>
 
 <!--< router-outlet />-->
