@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Games} from '../../shared/models/games.model';
 
 @Component({
   selector: 'app-games-list',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './games-list.css',
 })
 export class GamesList {
-
+  @Input() gamesFromParent! : Games[];
 }

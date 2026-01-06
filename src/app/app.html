@@ -3,9 +3,23 @@
 
   <h2>Top Rated</h2>
 
+  @for(game of topGames; track game.id){
+    <li>{{ game.title }}</li>
+    <p>Rating: {{ game.rating }}</p>
+  } @empty {
+    <li>There are no games.</li>
+  }
+
   <h2>Recent Releases</h2>
+
+  @for(game of recentGames; track game.id){
+    <li>{{ game.title }}</li>
+    <p>Release Year: {{ game.releaseYear }}</p>
+  } @empty {
+    <li>There are no games.</li>
+  }
 
   <h2>Rating Stats</h2>
 </body>
 
-<router-outlet />
+<!--< router-outlet />-->
